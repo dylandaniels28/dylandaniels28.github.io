@@ -17,7 +17,16 @@
           <a href="../players.html">Players</a>
         </div>
       </div>
-      
+
+      <script>
+        fetch('https://api.sportsdata.io/v3/nfl/stats/json/PlayerSeasonStats/2022?key=d8c6c00d33584eb886a3702eef9c510c')
+        .then(res => {
+          return res.json();
+        } )
+        .then(data => {
+          console.log(data);
+        })
+      </script>
 </body>
 
 </html>
