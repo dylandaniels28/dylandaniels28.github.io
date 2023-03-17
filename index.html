@@ -19,6 +19,22 @@
         </div>
       </div>
 
+
+      <div id="myHTMLWrapper">
+
+      </div>
+      <script>
+        let wrapper = document.getElementById("myHTMLWrapper");
+      
+        let myHTML = '';
+      
+        for (var i = 0; i < 16; i++) {
+          myHTML += '<div> <table><tr><td>NE</td><td>ATL</td></tr><tr><td>34</td><td>28</td></tr><tr><td colspan="2">FINAL</td></tr></table></div>';
+        }
+      
+        wrapper.innerHTML = myHTML
+      
+      </script>
 </body>
 
 </html>

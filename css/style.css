@@ -60,11 +60,127 @@
     font-size: 1.7rem;
     float: left;
     align-items: center;
-    position: relative;
-    bottom: auto;
+    position: absolute;
+    
 }
 
 .lowlight {
     color: black;
     font-size: 1.7rem;
+    position: absolute;
+    left: 4%;
 }
+
+img {
+  max-width: 100px;
+  height: auto;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: purple;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#top {
+  top: -30px;
+  left: 10%;
+}
+
+.NFC {
+  position: absolute;
+  right: 7%;
+  top: 17%;
+}
+
+.AFC {
+  position: absolute;
+  left: 7%;
+}
+
+.division {
+  position: absolute;
+  left: 30%; 
+}
+
+#top-one {
+  position: absolute;
+  right: 55%;
+  top: 30%;
+}
+
+#top-two {
+  position: absolute;
+  right: 45%;
+  top: 30%;
+}
+
+#top-three {
+  position: absolute;
+  right: 35%;
+  top: 30%;
+}
+
+#bottom-one {
+  position: absolute;
+  right: 55%;
+  top: 50%;
+}
+
+#bottom-two {
+  position: absolute;
+  right: 45%;
+  top: 50%;
+}
+
+#bottom-three {
+  position: absolute;
+  right: 35%;
+  top: 50%;
+}
+
+.box{
+  background-color: rgba(128, 0, 128, 0.621);
+  width: 40px;
+  padding: 30px;
+}
+
+.players a {
+  font-size: 1.7rem;
+color: black;
+text-decoration: none;
+}
+
+th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  font-size: 2.1rem;
+  
+}
+
+table {
+  
+  border: 3px solid black;
+  border-collapse: collapse;
+  font-size: 2.1rem;
+  color: black;
+  float: left;
+  margin:20px;
+  background-color: rgba(128, 0, 128, 0.621);
+}
+
