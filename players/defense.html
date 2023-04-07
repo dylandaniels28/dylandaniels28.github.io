@@ -21,15 +21,19 @@
         <table>
           <thead>
             <tr>
-              <th>Name</th>
               <th>Team</th>
-              <th>Position</th>
-              <th>Games Played</th>
-              <th>Field Goal Attempts</th>
-              <th>Field Goals Made</th>
-              <th>Longest Field Goal Made</th>
-              <th>Extra Points Attempted</th>
-              <th>Extra Points Made</th>
+              <th>Points Allowed</th>
+              <th>Touchdowns</th>
+              <th>Solo Tackles</th>
+              <th>Assisted Tackles</th>
+              <th>Tackles For Loss</th>
+              <th>Sacks</th>
+              <th>QB Hits</th>
+              <th>Passes Defended</th>
+              <th>Forced Fumbles</th>
+              <th>Fumbles Recovered</th>
+              <th>Interceptions</th>
+              <th>Safeties</th>
               <th>Fantasy Points</th>
               
 
@@ -41,13 +45,12 @@
         </table> 
       </div>
       <script>
-        fetch('https://api.sportsdata.io/v3/nfl/stats/json/PlayerSeasonStats/2022?key=d8c6c00d33584eb886a3702eef9c510c')
+        fetch('https://api.sportsdata.io/v3/nfl/stats/json/FantasyDefenseBySeason/2022?key=d8c6c00d33584eb886a3702eef9c510c')
         .then(res => {
           return res.json();
         } )
         .then(data => {
-          data = data.filter(item => item.Position.startsWith('K'));
-          data.sort((a, b) => a.Name.localeCompare(b.Name));
+          data.sort((a, b) => a.Team.localeCompare(b.Team));
           
 
           const tableBody = document.querySelector('tbody');
@@ -55,15 +58,19 @@
           data.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${item.Name}</td>
             <td>${item.Team}</td>
-            <td>${item.Position}</td>
-            <td>${item.Played}</td>
-            <td>${item.FieldGoalsAttempted}</td>
-            <td>${item.FieldGoalsMade}</td>
-            <td>${item.FieldGoalsLongestMade}</td>
-            <td>${item.ExtraPointsAttempted}</td>
-            <td>${item.ExtraPointsMade}</td>
+            <td>${item.PointsAllowed}</td>
+            <td>${item.TouchdownsScored}</td>
+            <td>${item.SoloTackles}</td>
+            <td>${item.AssistedTackles}</td>
+            <td>${item.TacklesForLoss}</td>
+            <td>${item.Sacks}</td>
+            <td>${item.QuarterbackHits}</td>
+            <td>${item.PassesDefended}</td>
+            <td>${item.FumblesForced}</td>
+            <td>${item.FumblesRecovered}</td>
+            <td>${item.Interceptions}</td>
+            <td>${item.Safeties}</td>
             <td>${item.FantasyPoints}</td>
             `;
             tableBody.appendChild(row);

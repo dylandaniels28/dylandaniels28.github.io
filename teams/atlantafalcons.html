@@ -17,7 +17,124 @@
           <a href="../players.html">Players</a>
         </div>
       </div>
-      
+      <div id="container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Position Category</th>
+              <th>Games Played</th>
+              <th>Passing Attempts</th>
+              <th>Passing Completions</th>
+              <th>Passing Yards</th>
+              <th>Completion Percentage</th>
+              <th>Passing Touchdowns</th>
+              <th>Passing Interceptions</th>
+              <th>Passer Rating</th>
+              <th>Rushing Attempts</th>
+              <th>Rushing Yards</th>
+              <th>Rushing Touchdowns</th>
+              <th>Receptions</th>
+              <th>Receiving Yards</th>
+              <th>Receiving Touchdowns</th>
+              <th>Fumbles</th>
+              <th>Punt Returns</th>
+              <th>Punt Return Yards</th>
+              <th>Punt Return Touchdowns</th>
+              <th>Kick Returns</th>
+              <th>Kick Return Yards</th>
+              <th>Kick Return Touchdowns</th>
+              <th>Solo Tackles</th>
+              <th>Assisted Tackles</th>
+              <th>Tackles For Loss</th>
+              <th>Sacks</th>
+              <th>QB Hits</th>
+              <th>Passes Defended</th>
+              <th>Fumbles Forced</th>
+              <th>Fumbles Recovered</th>
+              <th>Interceptions</th>
+              <th>Punts</th>
+              <th>Punt Yards</th>
+              <th>Average Punt Yards</th>
+              <th>Field Goal Attempts</th>
+              <th>Field Goals Made</th>
+              <th>Extra Points Made</th>
+              <th>Fantasy Points</th>
+              
+
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table> 
+      </div>
+      <script>
+        fetch('https://api.sportsdata.io/v3/nfl/stats/json/PlayerSeasonStatsByTeam/2022/atl?key=d8c6c00d33584eb886a3702eef9c510c')
+        .then(res => {
+          return res.json();
+        } )
+        .then(data => {
+          data.sort((a, b) => a.Name.localeCompare(b.Name));
+
+          const tableBody = document.querySelector('tbody');
+
+          data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${item.Name}</td>
+            <td>${item.Position}</td>
+            <td>${item.PositionCategory}</td>
+            <td>${item.Played}</td>
+            <td>${item.PassingAttempts}</td>
+            <td>${item.PassingCompletions}</td>
+            <td>${item.PassingYards}</td>
+            <td>${item.PassingCompletionPercentage}</td>
+            <td>${item.PassingTouchdowns}</td>
+            <td>${item.PassingInterceptions}</td>
+            <td>${item.PassingRating}</td>
+            <td>${item.RushingAttempts}</td>
+            <td>${item.RushingYards}</td>
+            <td>${item.RushingTouchdowns}</td>
+            <td>${item.Receptions}</td>
+            <td>${item.ReceivingYards}</td>
+            <td>${item.ReceivingTouchdowns}</td>
+            <td>${item.Fumbles}</td>
+            <td>${item.PuntReturns}</td>
+            <td>${item.PuntReturnYards}</td>
+            <td>${item.PuntReturnTouchdowns}</td>
+            <td>${item.KickReturns}</td>
+            <td>${item.KickReturnYards}</td>
+            <td>${item.KickReturnTouchdowns}</td>
+            <td>${item.SoloTackles}</td>
+            <td>${item.AssistedTackles}</td>
+            <td>${item.TacklesForLoss}</td>
+            <td>${item.Sacks}</td>
+            <td>${item.QuarterbackHits}</td>
+            <td>${item.PassesDefended}</td>
+            <td>${item.FumblesForced}</td>
+            <td>${item.FumblesRecovered}</td>
+            <td>${item.Interceptions}</td>
+            <td>${item.Punts}</td>
+            <td>${item.PuntYards}</td>
+            <td>${item.PuntAverage}</td>
+            <td>${item.FieldGoalsAttempted}</td>
+            <td>${item.FieldGoalsMade}</td>
+            <td>${item.ExtraPointsMade}</td>
+            <td>${item.FantasyPoints}</td>
+            `;
+            tableBody.appendChild(row);
+            });
+
+            const table = document.querySelector('table');
+    const container = document.querySelector('#container');
+    container.appendChild(table);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+      </script>
 </body>
 
 </html>

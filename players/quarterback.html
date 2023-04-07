@@ -18,14 +18,82 @@
         </div>
       </div>
 
+      
+
+      <div id="container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Team</th>
+              <th>Position</th>
+              <th>Games Played</th>
+              <th>Passing Attempts</th>
+              <th>Passing Completions</th>
+              <th>Passing Yards</th>
+              <th>Completion Percentage</th>
+              <th>Passing Touchdowns</th>
+              <th>Passing Interceptions</th>
+              <th>Passer Rating</th>
+              <th>Rushing Attempts</th>
+              <th>Rushing Yards</th>
+              <th>Rushing Touchdowns</th>
+              <th>Fumbles</th>
+              <th>Fumbles Lost</th>
+              <th>Sacks</th>
+              <th>Fantasy Points</th>
+              
+
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table> 
+      </div>
       <script>
         fetch('https://api.sportsdata.io/v3/nfl/stats/json/PlayerSeasonStats/2022?key=d8c6c00d33584eb886a3702eef9c510c')
         .then(res => {
           return res.json();
         } )
         .then(data => {
-          console.log(data);
-        })
+          data = data.filter(item => item.Position.startsWith('Q'));
+          data.sort((a, b) => a.Name.localeCompare(b.Name));
+
+          const tableBody = document.querySelector('tbody');
+
+          data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${item.Name}</td>
+            <td>${item.Team}</td>
+            <td>${item.Position}</td>
+            <td>${item.Played}</td>
+            <td>${item.PassingAttempts}</td>
+            <td>${item.PassingCompletions}</td>
+            <td>${item.PassingYards}</td>
+            <td>${item.PassingCompletionPercentage}</td>
+            <td>${item.PassingTouchdowns}</td>
+            <td>${item.PassingInterceptions}</td>
+            <td>${item.PassingRating}</td>
+            <td>${item.RushingAttempts}</td>
+            <td>${item.RushingYards}</td>
+            <td>${item.RushingTouchdowns}</td>
+            <td>${item.Fumbles}</td>
+            <td>${item.FumblesLost}</td>
+            <td>${item.PassingSacks}</td>
+            <td>${item.FantasyPoints}</td>
+            `;
+            tableBody.appendChild(row);
+            });
+
+            const table = document.querySelector('table');
+    const container = document.querySelector('#container');
+    container.appendChild(table);
+  })
+  .catch(error => {
+    console.error(error);
+  });
       </script>
 </body>
 
